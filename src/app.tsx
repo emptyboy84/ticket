@@ -2,8 +2,8 @@
 // 메인 앱 (src/App.tsx)
 // ==========================================
 import { useEffect, useState } from "react";
-import BookingSummary from "./components/bookingSummary";
-import SeatButton from "./components/seatButton";
+import BookingSummary from "./components/BookingSummary";
+import SeatButton from "./components/SeatButton";
 import { MOCK_SEATS, mockMovies, Movie, ROWS, Seat } from "./types";
 
 
