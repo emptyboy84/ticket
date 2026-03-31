@@ -20,7 +20,7 @@ export default function BookingSummary({ selectedSeats, totalPrice, onCheckout }
             <p className="text-gray-400 text-sm">
                선택좌석:{selectedSeats.map(seat => seat.id).join(',')}{/*배열을 문자열로 변환,seat) 
                seat => { return seat.id; }가축약된형태*/}
-            </p>"
+            </p>
             <p className="text-2xl font-bold">{totalPrice.toLocaleString()}원</p>
          </div>
          {/* 오른쪽: 결제 버튼 */}

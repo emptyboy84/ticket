@@ -16,7 +16,7 @@ export default function SeatButton({ seat, onSeatClick, isSelected }: SeatButton
    const isPremium = seat.grade === "premium";
    // 상태에 따른 복잡한 디자인(CSS) 결정 로직
 
-   let seatClass = "w-12 h12 rounded-t-xl rounded-b-md font-bold text-sm transition-all duration-200 flex items-center justify-center border-b-4 ";
+   let seatClass = "w-12 h-12 rounded-t-xl rounded-b-md font-bold text-sm transition-all duration-200 flex items-center justify-center border-b-4 ";
    let bgColor = "bg-gray-300";
 
    if (seat.status === "booked") { //예매된 좌석
