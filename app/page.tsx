@@ -5,7 +5,7 @@
 // ==========================================
 import BookingSummary from "@/components/BookingSummary";
 import SeatButton from "@/components/SeatButton";
-import { Movie, Seat, ROWS } from "@/types";
+import { Movie, ROWS, Seat } from "@/types";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -124,10 +124,10 @@ export default function Home() {
   // 총 결제 금액 계산
   const totalPrice = selectedMovie
     ? selectedSeats.reduce(
-        (total, seat) =>
-          total + selectedMovie.basePrice * seat.priceMultiplier,
-        0
-      )
+      (total, seat) =>
+        total + selectedMovie.basePrice * seat.priceMultiplier,
+      0
+    )
     : 0;
 
   const goToHome = () => {
