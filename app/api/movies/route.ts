@@ -1,9 +1,9 @@
 // ==========================================
 // GET /api/movies - 영화 목록 조회 API
 // ==========================================
-import { NextResponse } from "next/server";
 import dbConnect from "@/lib/mongodb";
 import Movie from "@/models/Movie";
+import { NextResponse } from "next/server";
 
 /**
  * 💡 이 함수는 브라우저에서 fetch('/api/movies')로 호출됩니다.
@@ -19,7 +19,7 @@ export async function GET() {
     await dbConnect();
 
     // MongoDB에서 모든 영화 조회
-    const movies = await Movie.find({}).lean();
+    const movies = await Movie.find({}).lean();//.lean()은 Mongoose 문서가 아닌 일반 JS 객체로 반환 (더 빠름)
 
     // 💡 .lean()은 Mongoose 문서가 아닌 일반 JS 객체로 반환 (더 빠름)
     return NextResponse.json(movies, { status: 200 });

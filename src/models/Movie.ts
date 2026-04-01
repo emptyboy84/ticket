@@ -2,7 +2,7 @@
 // Movie 모델 (Mongoose 스키마)
 // MongoDB의 'movies' 컬렉션과 1:1 매핑
 // ==========================================
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 
 // TypeScript 인터페이스: 영화 문서의 타입 정의
 export interface IMovie extends Document {
@@ -29,4 +29,4 @@ const MovieSchema = new Schema<IMovie>({
 // 💡 mongoose.models.Movie가 이미 있으면 재사용, 없으면 새로 생성
 // (서버리스 환경에서 모델 중복 등록 방지)
 export default mongoose.models.Movie ||
-  mongoose.model<IMovie>("Movie", MovieSchema);
+  mongoose.model<IMovie>("Movie", MovieSchema); 
