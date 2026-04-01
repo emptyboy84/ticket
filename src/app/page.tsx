@@ -2,10 +2,10 @@
 // ==========================================
 // 메인 앱 (app/page.tsx)
 // ==========================================
+import BookingSummary from "@/components/BookingSummary";
+import SeatButton from "@/components/SeatButton";
+import { MOCK_SEATS, mockMovies, Movie, ROWS, Seat } from "@/types";
 import { useEffect, useState } from "react";
-import BookingSummary from "../src/components/bookingSummary";
-import SeatButton from "../src/components/seatButton";
-import { MOCK_SEATS, mockMovies, Movie, ROWS, Seat } from "../src/types";
 
 
 export default function Home() {
