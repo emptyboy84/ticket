@@ -4,7 +4,7 @@
 // ==========================================
 import { Seat } from "../types";
 
-interface BookingSummaryProps {
+interface BookingSummaryProps { //인터페이스는 객체의 구조를 정의하는 데 사용됩니다.
   selectedSeats: Seat[];
   totalPrice: number;
   onCheckout: () => void;
@@ -32,11 +32,10 @@ export default function BookingSummary({
 
       {/* 오른쪽: 결제 버튼 */}
       <button
-        className={`px-8 py-3 rounded-xl font-bold transition-colors ${
-          selectedSeats.length === 0
+        className={`px-8 py-3 rounded-xl font-bold transition-colors ${selectedSeats.length === 0
             ? "bg-gray-600 text-gray-400 cursor-not-allowed"
             : "bg-indigo-600 hover:bg-indigo-700 text-white"
-        }`}
+          }`}
         onClick={onCheckout}
         disabled={selectedSeats.length === 0}
       >
