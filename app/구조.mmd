@@ -1,0 +1,38 @@
+---
+id: 32c6df85-b67e-4497-ab73-631ecca294cb
+---
+graph TD
+    subgraph Frontend [1. 프론트엔드 - 화면 Next.js/React]
+        A1[app/page.tsx 메인 페이지]
+        A2[src/components/SeatButton.tsx 좌석 버튼들]
+        A3[src/components/BookingSummary.tsx 결제 요약창]
+        
+        A1 --> A2
+        A1 --> A3
+    end
+
+    subgraph Backend [2. 백엔드 - API 서버 Next.js Route Handlers]
+        B1[app/api/movies/route.ts 영화 목록 요청 처리]
+        B2[app/api/bookings/route.ts 예약 상태 조회 & 예약 등록]
+        B3[app/api/bookings/id/route.ts 예약 취소 삭제 처리]
+    end
+
+    subgraph Database [3. 데이터베이스 MongoDB Atlas]
+        C1[lib/mongodb.ts DB 연결 파이프]
+        C2[models/Movie.ts 영화 모델링]
+        C3[models/Booking.ts 예약 모델링]
+        C4[(실제 MongoDB 데이터베이스)]
+    end
+
+    %% 연결 관계
+    Frontend -- HTTP 요청 fetch --> Backend
+    Backend -- 데이터 검증 및 요청 --> C1
+    C1 -- 모델 규칙 Schema 적용 --> C2
+    C1 -- 모델 규칙 Schema 적용 --> C3
+    C2 -. 읽기/쓰기 .-> C4
+    C3 -. 읽기/쓰기 .-> C4
+    
+    %% 색상 지정
+    style Frontend fill:#e0f2fe,stroke:#0284c7,stroke-width:2px
+    style Backend fill:#fef08a,stroke:#ca8a04,stroke-width:2px
+    style Database fill:#dcfce3,stroke:#16a34a,stroke-width:2px

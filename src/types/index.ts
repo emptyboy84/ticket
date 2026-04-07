@@ -9,6 +9,7 @@ export interface Movie {
   movieId: string;
   title: string;
   posterColor: string;
+  posterUrl?: string; // 실제 포스터 이미지 URL 추가
   runningTime: number;
   genre: string;
   basePrice: number;

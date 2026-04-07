@@ -9,6 +9,7 @@ export interface IMovie extends Document {
   movieId: string;      // 고유 식별자 (m1, m2, ...)
   title: string;        // 영화 제목
   posterColor: string;  // 포스터 배경색 (Tailwind 클래스)
+  posterUrl?: string;   // 실제 포스터 웹 주소
   runningTime: number;  // 상영 시간 (분)
   genre: string;        // 장르
   basePrice: number;    // 기본 가격
@@ -20,6 +21,7 @@ const MovieSchema = new Schema<IMovie>({
   movieId: { type: String, required: true, unique: true },
   title: { type: String, required: true },
   posterColor: { type: String, required: true },
+  posterUrl: { type: String, required: false },
   runningTime: { type: Number, required: true },
   genre: { type: String, required: true },
   basePrice: { type: Number, required: true },

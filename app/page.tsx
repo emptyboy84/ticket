@@ -174,17 +174,17 @@ export default function Home() {
           🍿 CINEMA NEXT
         </h1>
 
-        {/* 에러 메시지 또는 빈 데이터일 때 시드 버튼 표시 */}
-        {(error || movies.length === 0) && !loading && (
-          <div className="text-center mb-8">
-            <p className="text-gray-400 mb-4">
-              {error || "영화 데이터가 없습니다. 초기 데이터를 생성해주세요."}
+        {/* 서버 연동 테스트용 시드 버튼 (항상 표시) */}
+        {!loading && (
+          <div className="text-center mb-8 border border-gray-700 p-4 rounded-xl">
+            <p className="text-gray-400 mb-4 whitespace-pre-line">
+              {error || "💡 데이터베이스(MongoDB)에 데이터 밀어넣기 테스트"}
             </p>
             <button
               onClick={seedData}
               className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl transition-colors"
             >
-              🌱 초기 데이터 생성하기
+              🌱 초기 데이터 생성하기 (DB로 전송)
             </button>
           </div>
         )}
@@ -205,11 +205,20 @@ export default function Home() {
               className="bg-gray-800 rounded-2xl p-4 w-72 cursor-pointer hover:-translate-y-2 transition-all border border-gray-700 hover:border-indigo-500"
               onClick={() => goToBooking(movie)}
             >
-              <div
-                className={`w-full h-96 ${movie.posterColor} rounded-xl mb-4 flex items-center justify-center text-gray-400 font-bold text-2xl`}
-              >
-                🎬
-              </div>
+              {movie.posterUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={movie.posterUrl}
+                  alt={movie.title}
+                  className="w-full h-96 object-cover rounded-xl mb-4 shadow-lg shadow-black/50 group-hover:shadow-indigo-500/50 transition-shadow"
+                />
+              ) : (
+                <div
+                  className={`w-full h-96 ${movie.posterColor} rounded-xl mb-4 flex items-center justify-center text-gray-400 font-bold text-2xl shadow-lg shadow-black/50 group-hover:shadow-indigo-500/50 transition-shadow`}
+                >
+                  🎬
+                </div>
+              )}
               <h2 className="text-2xl font-bold mb-2">{movie.title}</h2>
               <div className="flex justify-between items-center text-sm text-gray-400 mb-2">
                 <span>{movie.genre}</span>
